@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   try {
     switch (req.method) {
       case 'GET':
-        return res.status(200).json(await prisma[table].findMany());
+        return res.status(200).json(await prisma[list].findMany());
 
     }
   } catch (error) {

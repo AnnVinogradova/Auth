@@ -59,8 +59,8 @@ model VerificationToken {
 }
 
 model Post {
-    id      Int    @id //The id of the character.
-    title   String //The name of the character.
-    body    String //The status of the character ('Alive', 'Dead' or 'unknown').
-    created String //Time at which the character was created in the database.
+    id      Int    @id 
+    title   String 
+    body    String 
+    created String 
 }

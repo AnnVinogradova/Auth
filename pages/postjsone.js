@@ -7,6 +7,6 @@ const fields = [
 	{ name: 'id', getVal: obj => obj.id },
 ];
 
-export default function usersPage() {
+export default function postsPage() {
 	return <RESTList store={$posts} url="https://jsonplaceholder.typicode.com/posts" {...{ fields }} />;
 } 

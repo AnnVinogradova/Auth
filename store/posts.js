@@ -4,9 +4,7 @@ export const [createFetcherStore, createMutatorStore] = nanoquery({
   fetcher: (...keys ) => fetch(keys.join('')).then(r => r.json()),
 });
 
-
 export const $posts = createFetcherStore(['/api/public/post/']);
-
 export const $addPosts = createMutatorStore(
   async ({ data, getCacheUpdater }) => {
 

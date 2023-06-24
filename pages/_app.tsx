@@ -20,7 +20,7 @@ export default function App({ Component,
 }
 
 const pages = [
-  { name: 'JsonPlaceholder Posts', src: '/jsonposts' },
+  { name: 'JsonPlaceholder Posts', src: '/postjsone' },
   { name: 'My Account', src: '/myaccount', test(session:any) { return !!session;} },
 ];
 

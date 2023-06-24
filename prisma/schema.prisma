@@ -6,10 +6,10 @@ generator client {
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("POSTGRES_PRISMA_URL") // uses connection pooling
-    // directUrl         = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
-    // shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+    provider          = "postgresql"
+    url               = env("POSTGRES_PRISMA_URL") // uses connection pooling
+    directUrl         = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+    shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
 }
 
 model Account {
@@ -56,4 +56,11 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Post {
+    id      Int    @id //The id of the character.
+    title   String //The name of the character.
+    body    String //The status of the character ('Alive', 'Dead' or 'unknown').
+    created String //Time at which the character was created in the database.
 }

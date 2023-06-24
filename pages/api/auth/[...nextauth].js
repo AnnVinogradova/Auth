@@ -17,11 +17,11 @@ export const authOptions = {
 		GoogleProvider({
 			clientId: process.env.GOOGLE_CLIENT_ID,
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET
-		  }),
+		}),
 		SpotifyProvider({
 			clientId: process.env.SPOTIFY_CLIENT_ID,
 			clientSecret: process.env.SPOTIFY_CLIENT_SECRET
-		  }),
+		}),
 		GitHubProvider({
 			clientId: process.env.GITHUB_ID,
 			clientSecret: process.env.GITHUB_SECRET
@@ -50,6 +50,27 @@ export const authOptions = {
 		})
 
 	],
+
+	callbacks: {
+		async signIn({ user, account, profile, email, credentials }) {
+			console.debug('>> callback signIn', { user, account, profile, email, credentials });
+			return true;
+		},
+		async redirect({ url, baseUrl }) {
+			console.debug('>> callback redirect', { url, baseUrl });
+			return baseUrl;
+		},
+		async session({ session, user, token }) {
+			console.debug('>> callback session', { session, user, token });
+			session.user.id = user.id;
+			session.user.role = user.role;
+			return session;
+		},
+		async jwt({ token, user, account, profile, isNewUser }) {
+			console.debug('>> callback jwt', { token, user, account, profile, isNewUser });
+			return token;
+		}
+	}
 };
 
 const resf = NextAuth(authOptions);

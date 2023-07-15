@@ -58,9 +58,9 @@ model VerificationToken {
     @@unique([identifier, token])
 }
 
-model Post {
-    id      Int    @id 
-    title   String 
-    body    String 
-    created String 
+model Photo {
+  id       String    @id @default(cuid())
+  title    String
+  url      String
 }
+

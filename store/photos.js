@@ -4,15 +4,14 @@ export const [createFetcherStore, createMutatorStore] = nanoquery({
   fetcher: (...keys ) => fetch(keys.join('')).then(r => r.json()),
 });
 
-export const $posts = createFetcherStore(['/api/public/post/']);
-export const $addPosts = createMutatorStore(
+export const $photos = createFetcherStore(['/api/public/photo/']);
+export const $addPhotos = createMutatorStore(
   async ({ data, getCacheUpdater }) => {
 
-    const [updateCache, char] = getCacheUpdater('/api/public/post/');
+    const [updateCache, char] = getCacheUpdater('/api/public/photo/');
     updateCache([...char, data]);
 
- 
-    return fetch('/api/public/post/',{
+    return fetch('/api/public/photo/',{
       method: 'POST',
       body:{data}
     });
